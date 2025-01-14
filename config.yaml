@@ -1,9 +1,6 @@
 ---
 apiVersion: "kubeadm.k8s.io/v1beta3"
 kind: InitConfiguration
-localAPIEndpoint:
-  advertiseAddress: local-ip
-  bindPort: 6443
 ---
 apiVersion: kubelet.config.k8s.io/v1beta1
 kind: KubeletConfiguration
@@ -17,3 +14,8 @@ apiVersion: kubeadm.k8s.io/v1beta3
 kind: ClusterConfiguration
 networking:
   podSubnet: "10.244.0.0/16" # --pod-network-cidr
+apiServer:
+  certSANs:
+  - 10.0.4.1
+  - 213.136.83.91
+  - localhost
